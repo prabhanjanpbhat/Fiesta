@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="css/login.css">
+  <title>REGISTER</title>
+  <script>
+    function validateForm() {
+      var name = document.forms["registrationForm"]["sname"].value;
+      var email = document.forms["registrationForm"]["email"].value;
+      var number = document.forms["registrationForm"]["number"].value;
+      var username = document.forms["registrationForm"]["username"].value;
+      var password = document.forms["registrationForm"]["password"].value;
+
+      // Regular expressions for email and phone number validation
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      var phoneRegex = /^\d{10}$/;
+
+      // Name validation
+      if (name.trim() == "") {
+        alert("Name must be filled out");
+        return false;
+      }
+
+      // Email validation
+      if (email.trim() == "" || !emailRegex.test(email)) {
+        alert("Invalid email address");
+        return false;
+      }
+
+      // Mobile number validation
+      if (number.trim() == "" || !phoneRegex.test(number)) {
+        alert("Invalid mobile number");
+        return false;
+      }
+
+      // Username validation
+      if (username.trim() == "") {
+        alert("Username must be filled out");
+        return false;
+      }
+
+      // Password validation
+      if (password.trim() == "" || password.length < 6) {
+        alert("Password must be at least 6 characters long");
+        return false;
+      }
+
+      return true; // Form is valid
+    }
+  </script>
+</head>
+<body>
+  <div class="login-page">
+    <div class="form">
+      <div class="login">
+        <div class="login-header">
+          <h2>REGISTER</h2>
+          <p>Please enter your credentials to register.</p>
+        </div>
+      </div>
+      <form class="login-form" name="registrationForm" action="" method="post" onsubmit="return validateForm()">
+        <input type="text" placeholder="Name" name="sname" required/>
+        <input type="email" placeholder="Email" name="email" required/>
+        <input type="text" placeholder="Mobile Number" name="number" required/>
+        <input type="text" placeholder="Username" name="username" required/>
+        <input type="password" placeholder="Password" name="password" required/>
+        <button class="btn btn-lg btn-primary btn-block">REGISTER</button>
+        <p class="message">Already a member?<a href="login.html">login</a></p>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
